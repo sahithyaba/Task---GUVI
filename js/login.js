@@ -1,4 +1,5 @@
-console.log("Fnc Called");
+// console.log("Fnc Called");
+console.log(localStorage.length);
 $(document).ready(function(){
     $("#login-form").submit(function (e){
         e.preventDefault();
@@ -29,6 +30,9 @@ $(document).ready(function(){
 
 function storeData(){
 
+    // clear the local storage data
+    window.localStorage.clear();
+
     // storing the current data in local storage
     let username,password;
     username=document.getElementById("username").value;
@@ -36,4 +40,5 @@ function storeData(){
 
     localStorage.setItem("username",username)
     localStorage.setItem("password",password)
+
 }
