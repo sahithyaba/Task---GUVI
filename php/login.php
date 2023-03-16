@@ -1,27 +1,24 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$user_password = "1234";
-$dbname = "users_details";
-
-// Create connection
-$conn = new mysqli($servername, $username, $user_password, $dbname,3307);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-// prepare and bind
-$stmt = $conn->prepare("INSERT INTO registered_users (username, password) VALUES (?, ?)");
-$stmt->bind_param("sss", $username, $password);
-
-// set parameters and execute
-$username = "John";
-$password = "Doe";
-
-echo "New records created successfully";
-
-$stmt->close();
-$conn->close();
+    // connect to the MySQL database
+    $mysqli = new mysqli("localhost", "root", "1234", "users_details",3307);
+    
+    // check for errors
+    if ($mysqli->connect_error) {
+        die("Connection failed: " . $mysqli->connect_error);
+    }
+    echo "Connected successfully";
+    
+    // prepare the MySQL statement
+    // $stmt = $mysqli->prepare("INSERT INTO users (usernamxe, email, password) VALUES (?, ?, ?)");
+    // $stmt->bind_param("sss", $username, $email, $password);
+    
+    // // insert user data into MySQL
+    // $username = $_POST['username'];
+    // $email = $_POST['email'];
+    // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    // $stmt->execute();
+    
+    // // close the MySQL connection
+    // $stmt->close();
+    // $mysqli->close();
 ?>
