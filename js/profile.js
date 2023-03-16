@@ -1,3 +1,11 @@
+function displayProfile(){
+    var username = localStorage.getItem("username");
+    var password = localStorage.getItem("password");
+
+    document.getElementById("username").value = username;
+    document.getElementById("password").value = password;
+}
+
 function clearStorage(){
     console.log("Cleared");
 
