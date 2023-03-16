@@ -7,6 +7,7 @@
         <link rel="icon" type="image/x-icon" href="./assets/logo.png">
         <link rel="stylesheet" href="./css/login.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     </head>
     <!-- head :: end -->
 
@@ -18,40 +19,39 @@
                 <div class="col-md-4 col-sm-4 col-xs-12"></div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <!-- login form :: start -->
-                    <form class="form-container" action="" method="get">
+                    <form class="form-container" id="login-form" action="php/login.php" method="post">
                         <div class="form-group">
                             <h1 class="form-heading">Login</h1>
                         </div>
                         
                         <div class="form-group">
-                            <label for="InputUsername">Username: </label>
-                            <input type="text" class="form-control" id="InputUsername" placeholder="Enter Username">
+                            <label for="username">Username: </label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter Username">
                         </div>
 
                         <div class="form-group">
-                            <label for="InputPassword">Password: </label>
-                            <input type="password" class="form-control" id="InputPassword" placeholder="Enter Password">
+                            <label for="password">Password: </label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter Password">
                         </div>
 
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-remember-input" id="FormRemember">
-                            <label class="form-remember-label" for="FormRemember">Remember Me</label>
+                            <input type="checkbox" class="form-remember-input" id="remember">
+                            <label class="form-remember-label" for="remember">Remember Me</label>
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-block" onclick="submitData();">Login</button>
+                            <button type="submit" class="btn btn-success btn-block" id="login-btn">Login</button>
                         </div> 
 
                         <div class="form-group">
-                            <a class="link" href="./login.html">New User? Register</a>
+                            <a class="link" href="./register.html">New User? Register</a>
                         </div>
 
                     </form>
                     <!-- login form :: end -->
                 </div>
             </div>
-        </div>
-        
+        </div>        
 
         <script src="./js/login.js"></script>
     </body>
