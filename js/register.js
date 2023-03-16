@@ -1,32 +1,29 @@
-
-function submitData(){
     console.log("Fnc Called");
     $(document).ready(function(){
-        $("#register-form").click(function (e){
+        $("#register-form").submit(function (e){
             e.preventDefault();
     
-            var username = $("InputUsername").val();
-            var password = $("InputPassword").val();
-            console.log(e);
-            $ajax({
-                url: "register.php",
+            var username = $("input[name='username']").val();
+            var password = $("input[name='password']").val();
+            // alert(username);
+            $.ajax({
+                url: "php/register.php",
                 method: "POST",
-                data:{
+                data: {
                     username: username,
                     password: password,
                 },
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function  (data){
-                    alert(data);
+                success: function (data) {
+                    // alert(data);
+                    alert("User Successfully Registered")
                     $("#register-form")[0].reset();
+                    var url = "./login.html";
+                    $(location).attr('href',url);
                 },
                 error: function(xhr, status, error){
                     console.log(xhr.responseText);
-                }
-            })
+                },
+            });
     
-        })
-    })
-    
-    }
+        });
+    });
