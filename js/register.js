@@ -27,3 +27,18 @@
     
         });
     });
+
+    function storeData(){
+    
+        // storing the current registered data in local storage
+        let username,password,email,phoneNumber;
+        username=document.getElementById("username").value;
+        password=document.getElementById("password").value;
+        email=document.getElementById("email").value;
+        phoneNumber=document.getElementById("phoneNumber").value;
+    
+        localStorage.setItem("username",username)
+        localStorage.setItem("password",password)
+        localStorage.setItem("email",email)
+        localStorage.setItem("phoneNumber",phoneNumber)
+    }

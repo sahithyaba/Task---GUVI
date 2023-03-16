@@ -15,8 +15,7 @@ $(document).ready(function(){
             },
             success: function (data) {
                 // alert(data);
-                alert("User Successfully Login")
-                $("#login-form")[0].reset();
+                alert("User Successfully Login");
                 var url = "./profile.html";
                 $(location).attr('href',url);
             },
@@ -27,3 +26,14 @@ $(document).ready(function(){
 
     });
 });
+
+function storeData(){
+
+    // storing the current data in local storage
+    let username,password;
+    username=document.getElementById("username").value;
+    password=document.getElementById("password").value;
+
+    localStorage.setItem("username",username)
+    localStorage.setItem("password",password)
+}
