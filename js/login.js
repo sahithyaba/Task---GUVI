@@ -1,5 +1,5 @@
 // console.log("Fnc Called");
-console.log(localStorage.length);
+// console.log(localStorage.length);
 $(document).ready(function(){
     $("#login-form").submit(function (e){
 
