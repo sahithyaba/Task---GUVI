@@ -4,9 +4,11 @@ $(document).ready(function(){
     $("#login-form").submit(function (e){
         e.preventDefault();
 
+        // Retriving the username and password
         var username = $("input[name='username']").val();
         var password = $("input[name='password']").val();
         // alert(username);
+
         $.ajax({
             url: "php/login.php",
             method: "POST",
@@ -14,15 +16,25 @@ $(document).ready(function(){
                 username: username,
                 password: password,
             },
-            success: function (data) {
+            success: function (resp) {
                 // alert(data);
-                alert("User Successfully Login");
-                var url = "./profile.html";
-                $(location).attr('href',url);
+                var res = JSON.stringify(resp);
+                var res_status = JSON.parse(res);
+                // alert(res_status[57] + "   " +res_status);
+                if(res_status[57]=='t'){
+                    alert("User Successfully Login");
+                    // var url = "./profile.html";
+                    // $(location).attr('href',url);
+                }
+                else{
+                    alert("Invalid Credentials");
+                }
+                
             },
-            error: function(xhr, status, error){
+            error: function(xhr, textStatus, errorThrown){
                 console.log(xhr.responseText);
             },
+            
         });
 
     });

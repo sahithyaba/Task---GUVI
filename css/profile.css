@@ -8,7 +8,29 @@
 
 .form-heading{
     text-align: center;
-    font-size: 3vw;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.status-bar{
+    text-align: center;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    color: white;
+    background-color: #0dba4b;
+
+    font-size: larger;
+    font-weight: bold;
+    animation: .3s ease-in-out;
+
+
+    display: none;
+}
+
+.activate{
+    display: block;
+    animation: .3s ease-in-out;
 }
 
 .form-container{
@@ -17,5 +39,5 @@
     margin-top: 10px;
     -webkit-box-shadow: 6px 3px 9px 0px rgba(133,135,134,1);
     -moz-box-shadow: 6px 3px 9px 0px rgba(133,135,134,1);
-    box-shadow: 6px 3px 9px 0px rgba(133,135,134,1);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }

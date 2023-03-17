@@ -7,41 +7,35 @@
         die("Connection failed: " . $mysqli->connect_error);
     }
     echo "Connected successfully";
-    
+
     $error = array();
     $res = array();
 
-    if (empty($_POST['username'])) {
-        $error[] = "Username field is required";
-    }
+    // retriving contents of the table
+    $statement = mysqli_prepare($mysqli,"select * from registered_users where username = ?");
+    mysqli_stmt_bind_param($statement,"s",$username);
 
-    if (empty($_POST['password'])) {
-        $error[] = "Password field is required";
-    }
+    // executing the statements
+    mysqli_stmt_execute($statement);
 
-    if (count($error) > 0) {
-        $resp['msg'] = $error;
-        $resp['status'] = false;
-        echo json_encode($resp);
+    // getting the result
+    $res = mysqli_stmt_get_result($statement);
+
+    $count = 0;
+
+    while ($row = mysqli_fetch_array($res, MYSQLI_NUM)){
+        $count++;
+     }
+
+    // echo $result;
+    if ($count>0) {
+        $resp['redirect'] = 'profile.php';
+        $resp['status'] = true;
+        echo json_encode($resp);        
         exit;
-    }
 
-    $statement = $db->prepare("select * from registered_users where username = :username");
-    $statement->execute(array(':username' => $_POST['username']));
-    $row = $statement->fetchAll(PDO::FETCH_ASSOC);
-    if (count($row) > 0) {
-        if (!password_verify($_POST['password'], $row[0]['password'])) {
-            $error[] = "Password is not valid";
-            $resp['msg'] = $error;
-            $resp['status'] = false;
-            echo json_encode($resp);
-            exit;
-        }
-        echo json_encode($resp);
-        
-        exit;
     } else {
-        $error[] = "Username does not exist";
+        $error[] = "Invalid Username or Password";
         $resp['msg'] = $error;
         $resp['status'] = false;
         echo json_encode($resp);
