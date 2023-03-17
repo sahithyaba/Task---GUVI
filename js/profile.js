@@ -6,6 +6,10 @@ function displayProfile(){
     document.getElementById("password").value = password;
 }
 
+function updateData(){
+    
+}
+
 function clearStorage(){
     console.log("Cleared");
 
@@ -15,3 +19,4 @@ function clearStorage(){
     // redirect to login page
     window.location.replace("./login.html");    
 }
+
