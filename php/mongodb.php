@@ -15,6 +15,9 @@ $insertOneResult = $userCollection->insertOne(
     'password'=>$_GET["password"],
     'phoneNumber'=>$_GET["phoneNumber"],
     'email'=>$_GET["email"],
+    'firstname'=>null,
+    'lastname'=>null,
+    'dob'=>null,
     ]
 );
 

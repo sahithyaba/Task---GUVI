@@ -2,6 +2,7 @@ function displayProfile()
 {
     var username=localStorage.getItem("username");
 
+
     $.ajax({
         type: "GET",
         url: "http://localhost/Guvi/php/profile.php",
@@ -24,6 +25,9 @@ function displayProfile()
             console.log(error);
         },
     });
+
+    document.getElementById("username").value=username;
+    document.getElementById("password").value=password;
 }
 
 function updateData(e)

@@ -2,6 +2,7 @@
 console.log(localStorage.length);
 $(document).ready(function(){
     $("#login-form").submit(function (e){
+
         e.preventDefault();
 
         // Retriving the username and password
@@ -20,11 +21,11 @@ $(document).ready(function(){
                 // alert(data);
                 var res = JSON.stringify(resp);
                 var res_status = JSON.parse(res);
-                // alert(res_status[57] + "   " +res_status);
-                if(res_status[57]=='t'){
+                // alert(res_status[33] + "   " +res_status);
+                if(res_status[33]=='t'){
                     alert("User Successfully Login");
-                    // var url = "./profile.html";
-                    // $(location).attr('href',url);
+                    var url = "./profile.html";
+                    $(location).attr('href',url);
                 }
                 else{
                     alert("Invalid Credentials");
