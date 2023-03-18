@@ -1,57 +1,60 @@
-// console.log("Fnc Called");
-// console.log(localStorage.length);
-$(document).ready(function(){
-    $("#login-form").submit(function (e){
+
+$(document).ready(function()
+{
+    $("#login-form").submit(function(e)
+    {
 
         e.preventDefault();
 
         // Retriving the username and password
-        var username = $("input[name='username']").val();
-        var password = $("input[name='password']").val();
+        var username=$("input[id='username']").val();
+        var password=$("input[id='password']").val();
+
         // alert(username);
 
         $.ajax({
-            url: "php/login.php",
-            method: "POST",
+            type: "GET",
+            url: "http://localhost/Guvi/php/login.php",
             data: {
-                username: username,
-                password: password,
+                username: $("input[id='username']").val(),
+                password: $("input[id='password']").val(),
             },
-            success: function (resp) {
-                // alert(data);
-                var res = JSON.stringify(resp);
-                var res_status = JSON.parse(res);
-                // alert(res_status[33] + "   " +res_status);
-                if(res_status[33]=='t'){
-                    alert("User Successfully Login");
-                    var url = "./profile.html";
-                    $(location).attr('href',url);
-                }
-                else{
-                    alert("Invalid Credentials");
-                }
-                
-            },
-            error: function(xhr, textStatus, errorThrown){
+            error: function(xhr, textStatus, errorThrown)
+            {
                 console.log(xhr.responseText);
             },
-            
+            success: function(response)
+            {
+                console.log(response);
+
+                if(response=="true") {
+                    localStorage.setItem("username", username);
+                    localStorage.setItem("password", password);
+
+                    // Redirect to the profile page
+                    window.location.href="profile.html";
+                }
+                else {
+                    alert("Invalid credentails");
+                }
+
+                
+            }
         });
 
     });
 });
 
-function storeData(){
+// function storeData()
+// {
 
-    // clear the local storage data
-    window.localStorage.clear();
+//     // clear the local storage data
+//     window.localStorage.clear();
 
-    // storing the current data in local storage
-    let username,password;
-    username=document.getElementById("username").value;
-    password=document.getElementById("password").value;
+//     // storing the current data in local storage
+//     let username, password;
+//     username=document.getElementById("username").value;
+//     password=document.getElementById("password").value;
 
-    localStorage.setItem("username",username)
-    localStorage.setItem("password",password)
 
-}
+// }

@@ -1,26 +1,28 @@
 console.log("Fnc Called");
-$(document).ready(function () {
-    $("#register-form").submit(function (e) {
+$(document).ready(function()
+{
+    $("#register-form").submit(function(e)
+    {
         e.preventDefault();
 
-        var username = $("input[name='username']").val();
-        var password = $("input[name='password']").val();
+        var username=$("input[name='username']").val();
+        var password=$("input[name='password']").val();
         // alert(username);
         $.ajax({
-            url: "php/register.php",
-            method: "POST",
+            url: "http://localhost/Guvi/php/register.php",
+            method: "GET",
             data: {
                 username: username,
                 password: password,
             },
-            success: function (data) {
+            success: function(data)
+            {
                 // alert(data);
                 alert("User Successfully Registered")
                 $("#register-form")[0].reset();
-                var url = "./login.html";
-                $(location).attr('href', url);
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error)
+            {
                 console.log(xhr.responseText);
             },
         });
@@ -28,13 +30,14 @@ $(document).ready(function () {
     });
 });
 
-function saveInMongo(e) {
+function saveInMongo(e)
+{
     e.preventDefault();
 
-    var username = $("input[id='username']").val();
-    var password = $("input[id='password']").val();
-    var email = $("input[id='InputEmail']").val();
-    var phoneNumber = $("input[id='InputPhoneNumber']").val();
+    var username=$("input[id='username']").val();
+    var password=$("input[id='password']").val();
+    var email=$("input[id='email']").val();
+    var phoneNumber=$("input[id='phoneNumber']").val();
 
     $.ajax({
         type: "GET",
@@ -45,10 +48,14 @@ function saveInMongo(e) {
             email: email,
             phoneNumber: phoneNumber,
         },
-        success: function (data) {
+        success: function(data)
+        {
             console.log(data);
+            var url="./login.html";
+            window.location.href=url;
         },
-        error: function (xhr, status, error) {
+        error: function(xhr, status, error)
+        {
             console.log(error);
         },
     });
@@ -56,14 +63,15 @@ function saveInMongo(e) {
 
 document.getElementById("register-form").addEventListener("submit", saveInMongo);
 
-function storeData() {
+function storeData()
+{
 
     // storing the current registered data in local storage
     let username, password, email, phoneNumber;
-    username = document.getElementById("username").value;
-    password = document.getElementById("password").value;
-    email = document.getElementById("email").value;
-    phoneNumber = document.getElementById("phoneNumber").value;
+    username=document.getElementById("username").value;
+    password=document.getElementById("password").value;
+    email=document.getElementById("email").value;
+    phoneNumber=document.getElementById("phoneNumber").value;
 
     localStorage.setItem("username", username)
     localStorage.setItem("password", password)

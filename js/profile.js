@@ -1,7 +1,7 @@
 function displayProfile()
 {
     var username=localStorage.getItem("username");
-
+    console.log(username);
 
     $.ajax({
         type: "GET",
@@ -25,9 +25,6 @@ function displayProfile()
             console.log(error);
         },
     });
-
-    document.getElementById("username").value=username;
-    document.getElementById("password").value=password;
 }
 
 function updateData(e)

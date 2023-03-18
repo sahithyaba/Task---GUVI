@@ -40,18 +40,4 @@ require '../vendor/autoload.php';
     break;
     }
 
-        // create a Redis instance for session storage
-    $redis = new Redis();
-    $redis->connect('localhost', 6379);
-
-    // retrieve the user ID from Redis using the session ID
-    $userId = $redis->get('session:' . $sessionId);
-
-    // check if the user ID is valid
-    if (empty($userId)) {
-        http_response_code(401);
-        echo json_encode(array('message' => 'Invalid session ID'));
-        return;
-    }
-
 ?>

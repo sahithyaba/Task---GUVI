@@ -1,31 +1,33 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+
 // Establish Database connection
-$mysqli = new mysqli("localhost", "root", "1234", "users_details",3307);
+$mysqli = new mysqli("localhost", "root", "", "users_details",3307);
     
 // check for errors
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
-var_dump($_POST);
+var_dump($_GET);
 
-if (isset($_POST['username'])) {
-    $username = $_POST["username"];
+if (isset($_GET['username'])) {
+    $username = $_GET["username"];
  }
  else{
     echo "Username not found";
  }
 
- if (isset($_POST['password'])) {
-    $password = $_POST["password"];
+ if (isset($_GET['password'])) {
+    $password = $_GET["password"];
  }
  else{
     echo "Password not found";
  }
 
-// $username = isset( $_POST["username"] ) ? $_POST["username"] : "hi" ;
-// $password = isset( $_POST["password"] ) ? $_POST["password"] : "hi" ;
+// $username = isset( $_GET["username"] ) ? $_GET["username"] : "hi" ;
+// $password = isset( $_GET["password"] ) ? $_GET["password"] : "hi" ;
 
 // Check form data
 var_dump($username,$password);

@@ -12,7 +12,7 @@ $userCollection = $profiledb -> usersProfile;
 
 $data = $userCollection->find(["username"=>$_GET["username"]]);
 
- foreach($data as $dt)
+foreach($data as $dt)
 {
     $profile=[
         "username"=>$dt["username"],
