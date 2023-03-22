@@ -30,6 +30,12 @@ foreach($data as $dt)
         $profile += array("dob" => $dt["dob"]);
     };
 
+    $redis = new Redis();
+    $redis->connect('localhost', 6379);
+
+    // retrieve the user ID from Redis using the session ID
+    $userId = $redis->get('session:' . $sessionId);
+
     header('Content-type: application/json');
     echo json_encode($profile);
     break;

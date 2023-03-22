@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 header('Access-Control-Allow-Origin: *');
 
 
@@ -24,5 +26,12 @@ $conn = mysqli_connect('localhost', 'root', '', 'users_details',3307);
 
    
       }
+
+      $redis = new Redis();
+    $redis->connect('localhost', 6379);
+
+    // generate a unique session ID and store it in Redis
+    $sessionId = uniqid();
+    $redis->setex('session:' . $sessionId, 3600, $user['username']);
   echo json_encode($response);
   exit();
